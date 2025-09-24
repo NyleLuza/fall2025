@@ -80,3 +80,62 @@ Hint:
 • You can plot multiple boxplots in one figure by putting them into a list:
 2
 """
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# load data into data frame
+df = pd.read_csv("adult.csv")
+plot_before = df['education-num']
+
+# filter out data
+filtered_plot = df[df['education-num'].between(5,16)]
+
+plt.boxplot([plot_before, filtered_plot['education-num']], labels=["Before", "After"])
+plt.show()
+
+"""
+Problem 4: Programming: Filling missing values (30%)
+In this problem, you will implement a missing data handling method that we discussed
+in class: using the attribute mean, median, or mode for all samples belonging to the
+same class as the given tuple.
+According to the metadata of the adult dataset, there are missing values in the ”native-
+country” attribute. And there are some attributes that doesn’t contain NaN. Our task
+will be to use one of the completed attributes, find the most possible value to fill the
+missing value.
+Let’s start with the single missing value.
+1. To start the filling process, we first need to choose an appropriate attribute as a
+help attribute. The four candidate attributes that do not contain missing values
+are:
+• education
+• relationship
+• race
+• sex
+Choose the appropriate attributes from candidates by calculating the correlation
+between the candidate and ”native-country”. The higher correlation gives us a
+higher chance of filling the correct value. You can use any correlation measures
+in this step. The example of correlation is provided data exploration.ipynb.
+2. Use DataFrame.tail(50) to list the last fifty samples of the dataframe, then
+you will notice that the nationality of the No. 48826 data instance is marked as
+NaN:
+3. Identify the candidate attribute of this sample, in other words, what is the at-
+tribute of row 48826 of education/relationship/race/sex, the one attribute you
+get the highest correlation from the step 1
+Note: to automate the process and further applying this method
+to other missing values, we should use the the variable and index-
+ing to find the attribute rather than manually inspecting them, i.e.
+df.loc[48826, ’sex’] instead of ’female’.
+3
+4. Find all the samples that belong to the same candidate category.
+5. In this subset of the dataframe, find the most common ”native-country” (the
+Series.mode() function returns a series, so use index 0 to extract the value).
+6. Fill the missing value with this category using DataFrame.at to assign the value.
+7. Use DataFrame.tail(50) again to verify the result.
+Extra (5%): Now try to apply this method to the whole NaN values shown in ”native-
+country” attributes.
+Instead of using tail, use value counts before and after to discover the changes.
+Hint:
+• You can use DataFrame.iterrows() to traverse the entire data frame.
+• Use pandas.isna() to check if there are NaN values in the ”native-country”
+attribute.
+"""
