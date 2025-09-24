@@ -36,10 +36,47 @@ this plot?
 
 (7) Pearson correlation and χ2 correlation are two correlation methods, but they are
 suited for different data types. What types are they suited for?
+    - x^2 correlation is suited for nominal data, while Pearson correlation is suited for interval and ratio data.
 (8) Regarding all the visualizations we have learned, which figure best describes
 correlation?
+    - scatter plots are the best visualization for correlation because it allows us to see a pattern when comparing two different 
+      data points
 (9) What is metadata?
     - Metadata is data about the data. It is information that describes the dataset's structure
 (10) List three cleaning missing data strategies that first come to mind.
+    - First data cleaning strategy that comes to mind is data smoothing. where we break down the data into bins, and the values in each bin are replaced with the mean or median
+      of that bin. Second strategy that comes to mind is just by filling in missing values manually. Third strategy that comes to mind is ignoring the entry fully if it is missing
+      values, so we just delete it from our dataset.
 
+Problem 2: Identify data types (20%)
+Given a sample dataset that describe the vehicle information, for each attribute, answer
+following questions:
+Last 4 VIN | Vehicle Type | Clean Title | Safety Level | Number of Accidents | Mileage (km)
+------------------------------------------------------------------------------------------
+13C2       | Sedan        | Yes         | A+           | 0                   | 35,678
+24F1       | SUV          | No          | B+           | 2                   | 75,421
+3VD3       | Truck        | Yes         | A            | 0                   | 123,560
+T54N       | Coupe        | No          | B-           | 3                   | 25,982
+1. Which data type (Nominal, Binary, Ordinal, Numeric)?
+    - Nominal: Vehicle Type, Last 4 VIN (Categories with no order hierarchy)
+    - Binary: Clean Title (Only two options)
+    - Ordinal: Safety Level (Categories that have hierarchy)
+    - Numeric: Mileage, Number of Accidents (Numeric Value)
+2. Is it continuous or discrete?
+    - Discrete: Number of Accidents (no fractional values of an accident)
+    - Continous: Mileage (You can have a fraction of a mile)
+3. If it is numeric data, does it belong to a ratio-based or interval-based attribute?
+    - Both numeric data are interval-based attributes because they both have a true 0.
+
+Problem 3: Programming: clean the outliers (20%)
+• In this problem, you will use the empirical rule we discussed in class to filter out
+the outliers.
+• Use the same dataset we used in class, ”adult” from UCIML repository. Instead
+of age, we will work on ”education-num” attribute.
+• Use 1.5 IQR rule to filter out the outliers.
+• Use boxplot to visualize the distribution before and after the outlier removal.
+Hint:
+• Use pandas.Series.between() function to choose the data in a certain range.
+• You can plot multiple boxplots in one figure by putting them into a list:
+2
 """
