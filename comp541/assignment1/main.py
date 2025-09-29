@@ -85,13 +85,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # load data into data frame
-df = pd.read_csv("adult.csv")
+df = pd.read_csv("assignment1/adult.csv")
 plot_before = df['education-num']
 
 # filter out data
 filtered_plot = df[df['education-num'].between(5,16)]
 
-plt.boxplot([plot_before, filtered_plot['education-num']], labels=["Before", "After"])
+plt.boxplot([plot_before, filtered_plot['education-num']], tick_labels=["Before", "After"])
 plt.show()
 
 """
