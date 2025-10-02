@@ -54,4 +54,23 @@ def divide(start, end, items):
     return combine
 items = [123, 34, 189, 56, 150, 12, 9, 240]
 print(divide(0, len(items)-1, items))
+
+Problem 9:
+Seperate Doc
+
+Problem 15:
+a) T(n) = 5*T(n/3) + g(n)
+b) T(n) = 5*T(n/3) + O(n) = O(n) => O(n^1.46497) according to case 3 of master theorem
+   T(n) belong to O(n^(logbaseb(a))) if a > b^k. a = 5; b = 3; k = 1 (since the outer work is linear)
+c) T(n) = 5*T(n/3) + O(n^2) => O(n^2) because according to case 1 of master theorem, a < b^k, since
+   a = 5, b = 3, and k = 2, so this satisifies case 1. T(n) belongs to O(n^k) which is O(n^2)
+d) T(3^m) = O(3^, * (5/3)^m) = O(n^1.46497)
+
+Problem 17:
+Towers of Hanoi
 """
+def tower_hanoi(disks):
+    peg1, peg2, peg3= []
+
+
+print(tower_hanoi([5, 4, 1, 10, 11, 9, 18, 12, 3]))
