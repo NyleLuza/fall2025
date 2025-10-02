@@ -56,7 +56,7 @@ items = [123, 34, 189, 56, 150, 12, 9, 240]
 print(divide(0, len(items)-1, items))
 
 Problem 9:
-Seperate Doc
+On Document
 
 Problem 15:
 a) T(n) = 5*T(n/3) + g(n)
@@ -67,10 +67,76 @@ c) T(n) = 5*T(n/3) + O(n^2) => O(n^2) because according to case 1 of master theo
 d) T(3^m) = O(3^, * (5/3)^m) = O(n^1.46497)
 
 Problem 17:
-Towers of Hanoi
+Towers of Hanoi alg
+def move_stack(n, src, aux, dst):
+    if n == 0: 
+        return
+    move_stack(n-1, src, dst, aux)
+    dst.append(src.pop())      # move top disk
+    move_stack(n-1, aux, src, dst)
+
+# Example:
+A = [4,3,2,1]  # bottom->top
+B = []
+C = []
+move_stack(4, A, B, C)
+print(C)
+
+a) Recurrence Relation: S(n) = 2S(n-1) + 1, S(1) = 1
+Base Case: n=1; 2^1 - 1 = 1
+Step: We assume S(n-1) = 2^(n-1)-1
+    Then S(n) = 2(2^(n-1)-1) + 1 = 2^n - 2 + 1 = 2^n -1
+S(n) = 2^n - 1 for all n>=1
+
+Problem 19:
+On Document
+
+Problem 20:
+On Document
+
+Problem 34:
+def exchange_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]   # swap
+    return arr
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[0]                      # first element is pivot
+    left = [x for x in arr[1:] if x <= pivot]
+    right = [x for x in arr[1:] if x > pivot]
+    return quicksort(left) + [pivot] + quicksort(right)
+
+# call on both functions
+print(quicksort([64, 25, 12, 22, 11]))
+print(exchange_sort([64, 25, 12, 22, 11]))
+
+a) Find the lower bound for n that justifies
+application of the Quicksort algorithm with its overhead.
+    - For really small arrays the exchange sort is faster then quicksort, however when n grows
+      the quicksort algorithm becomes the better option.
+
+Problem 40:
+def search_matrix(matrix, target):
+    if not matrix or not matrix[0]:
+        return None  # empty matrix
+    
+    n, m = len(matrix), len(matrix[0])
+    
+    # start from top-right corner
+    row, col = 0, m - 1
+    
+    while row < n and col >= 0:
+        if matrix[row][col] == target:
+            return (row, col)   # found at (row, col)
+        elif matrix[row][col] > target:
+            col -= 1           # move left
+        else:
+            row += 1           # move down
+    
+    return None  # not found
 """
-def tower_hanoi(disks):
-    peg1, peg2, peg3= []
-
-
-print(tower_hanoi([5, 4, 1, 10, 11, 9, 18, 12, 3]))
