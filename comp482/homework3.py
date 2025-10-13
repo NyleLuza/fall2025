@@ -62,6 +62,51 @@ A(((BC)D)E)
 (((AB)C)D)E
 
 Problem 28:
+Find an optimal circuit for the weighted, direct graph represented by the
+following matrix W. Show the actions step by step.
 
+D[v1][{v2, v3, v4, v5}] = min(W[1][j] + D[j][{v2, v3, v4, v5} - {vj}]
+         = min(W[1][2] + D[2][{v3, v4, v5}],
+               W[1][3] + D[3][{v2, v4, v5}],
+               W[1][4] + D[4][{v2, v3, v5}],
+               W[1][5] + D[5][{v2, v3, v4}])
+
+D[v2][{v3, v4, v5}] = min(W[2][3] + D[3][{v4, v5}]
+                          W[2][4] + D[4][{v3, v5}]
+                          W[2][5] + D[5][{v2, v3}])
+
+    D[v3][{v4, v5}] = min(W[3][4] + D[4][{v5}]
+                      w[3][5] + D[5][{v4}])
+
+        D[v4][{v5}] = min(W[4][5] + D[5][{}]) = 11 + 10 = 22
+
+        D[v5][{v4}] = min(W[5][4] + D[4][{}]) = 6 + 1 = 7
+    
+    D[v4][{v3, v5}] = min(W[4][3] + D[3][{v5}],
+                          W[4][5] + D[5][{v3}])
+
+        D[v3][{v5}] = min(W[3][5] + D[5][{}]) = 7 + 2 = 9
+
+        D[v5][{v3}] = min(W[5][3] + D[3][{}]) = 2 + 7 = 9
+
+        D[v5][{v2, v3}]
+
+D
 """
+import numpy as np
+
+W = [[0, 8, 13, 18, 20],
+    [3, 0, 7, 8, 10],
+    [4, 11, 0, 10, 7],
+    [6, 6, 7, 0, 11],
+    [10, 6, 2, 1, 0]]
+
+W = np.array(W)
+D = np.full(W.shape, np.inf, dtype=int)
+
+def shortest_path(W, D, n)
+for i in range(n):
+    for j in range(n):
+        D[i][j] = min()
+
 
